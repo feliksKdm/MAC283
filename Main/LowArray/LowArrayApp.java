@@ -50,7 +50,7 @@ class LowArrayApp
         int target = 22;
         for (j=0; j<nElems; j++)
             if( arr.getElem(j) == target)
-                IO.println(j+1);
+                System.out.println(j+1);
 
     }  // end main()
 }  // end class LowArrayApp
