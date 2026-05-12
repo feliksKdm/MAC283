@@ -1,30 +1,30 @@
-package HashTable7.DoubleHash;
+package HashTable7.SeparateChaining;
 
 import java.io.*;
 
-class HashDoubleApp
+class HashChainApp
 {
     public static void main(String[] args) throws IOException
     {
         int aKey;
-        DataItem aDataItem;
-        int size, n;
+        Link aDataItem;
+        int size, n, keysPerCell = 100;
         // get sizes
-        System.out.print("Enter size of hash table2: ");
+        System.out.print("Enter size of hash table: ");
         size = getInt();
         System.out.print("Enter initial number of items: ");
         n = getInt();
         // make table
         HashTable theHashTable = new HashTable(size);
 
-        for(int j=0; j<n; j++)      // insert data
+        for(int j=0; j<n; j++)         // insert data
         {
-            aKey = (int)(java.lang.Math.random() * 2 * size);
-            aDataItem = new DataItem(aKey);
-            theHashTable.insert(aKey, aDataItem);
+            aKey = (int)(java.lang.Math.random() *
+                    keysPerCell * size);
+            aDataItem = new Link(aKey);
+            theHashTable.insert(aDataItem);
         }
-
-        while(true)                 // interact with user
+        while(true)                    // interact with user
         {
             System.out.print("Enter first letter of ");
             System.out.print("show, insert, delete, or find: ");
@@ -37,8 +37,8 @@ class HashDoubleApp
                 case 'i':
                     System.out.print("Enter key value to insert: ");
                     aKey = getInt();
-                    aDataItem = new DataItem(aKey);
-                    theHashTable.insert(aKey, aDataItem);
+                    aDataItem = new Link(aKey);
+                    theHashTable.insert(aDataItem);
                     break;
                 case 'd':
                     System.out.print("Enter key value to delete: ");
@@ -67,7 +67,7 @@ class HashDoubleApp
         String s = br.readLine();
         return s;
     }
-    //--------------------------------------------------------------
+    //-------------------------------------------------------------
     public static char getChar() throws IOException
     {
         String s = getString();
@@ -80,4 +80,4 @@ class HashDoubleApp
         return Integer.parseInt(s);
     }
     //--------------------------------------------------------------
-}  // end class HashDoubleApp
+}  // end class HashChainApp
